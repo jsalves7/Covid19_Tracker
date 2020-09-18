@@ -1,4 +1,5 @@
-import {debounce, mutate} from "overmind";
+import {debounce, mutate, pipe} from "overmind";
+import SETTINGS from '../config/settings';
 
 export default {
     app: {
@@ -6,5 +7,21 @@ export default {
             state.app.loading = loading;
         }
     },
-    covidTracker: {},
+    covidTracker: {
+        retrieveGlobalData: pipe(
+           debounce(SETTINGS.app.DEBOUNCE_TIME),
+           mutate(async ({state, effects: {api}, actions}) => {
+               actions.app.setLoading = true;
+               
+               try {
+                    const {data} = await api.retrieveGlobalData();
+                    state.covidTracker.globalData = data;
+               } catch (error) {
+                   console.log(error)
+               }
+
+               actions.app.setLoading = false;
+           })
+        )
+    },
 };

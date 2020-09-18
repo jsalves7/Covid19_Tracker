@@ -2,5 +2,9 @@ const DEFAULT_STATE = {
     app: {
         loading: false,
     },
-    covidTracker: {},
+    covidTracker: {
+        globalData: {},
+    },
 };
+
+export default DEFAULT_STATE;

@@ -1,8 +1,13 @@
-import React from "react";
-import "./App.css";
+import React from 'react';
+import './App.css';
+import Cards from './components/cards/connectedCards';
 
-function App() {
-    return <div>APP</div>;
+const App = () => {
+  return (
+    <div>
+      <Cards />
+    </div>
+  );
 }
 
 export default App;
