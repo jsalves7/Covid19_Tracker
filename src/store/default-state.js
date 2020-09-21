@@ -4,6 +4,7 @@ const DEFAULT_STATE = {
     },
     covidTracker: {
         globalData: {},
+        dailyData: [],
     },
 };
 

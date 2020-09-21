@@ -14,5 +14,8 @@ export default {
         retrieveGlobalData: () => {
             return apiHttpClient.get();
         },
+        retrieveDailyData: () => {
+            return apiHttpClient.get(`/daily`);
+        },
     }
 }
